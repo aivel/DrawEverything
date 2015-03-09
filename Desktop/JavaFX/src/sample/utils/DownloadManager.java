@@ -11,14 +11,14 @@ import java.net.URL;
  */
 public class DownloadManager {
     public static void download(final String downloadUrl, final String savePath,
-                                final boolean forced, final DownloadStatusCallback callback) {
+                                final boolean forced, final ActionStatusChangedCallback callback) {
         AsyncTask<Void> asyncTask = new AsyncTask<Void>() {
             @Override
             public Void doInBackground() {
                 if (downloadUrl == null || savePath == null
                         || callback == null || (new File(savePath).exists() && !forced)) {
                     if (callback != null)
-                        callback.onDownloadFailed();
+                        callback.onFail();
 
                     return null;
                 }
@@ -58,14 +58,7 @@ public class DownloadManager {
 
             @Override
             public void postExecute(Void result) {
-                Task<Void> task = new Task<Void>() {
-                    @Override
-                    protected Void call() throws Exception {
-                        callback.onDownloadComplete();
-                        return null;
-                    }
-                };
-                Platform.runLater(task);
+                callback.onSuccess();
             }
 
             @Override
@@ -73,7 +66,7 @@ public class DownloadManager {
                 Task<Void> task = new Task<Void>() {
                     @Override
                     protected Void call() throws Exception {
-                        callback.onDownloadFailed();
+                        callback.onFail();
                         return null;
                     }
                 };
@@ -83,8 +76,4 @@ public class DownloadManager {
         asyncTask.start();
     }
 
-    public static interface DownloadStatusCallback {
-        public void onDownloadComplete();
-        public void onDownloadFailed();
-    }
 }

@@ -46,4 +46,12 @@ public class DrawScene {
         canvas.getGraphicsContext2D().lineTo(me.getX(), me.getY());
         canvas.getGraphicsContext2D().stroke();
     }
+
+    public void onBtnPrevStepAction(ActionEvent event) {
+
+    }
+
+    public void onBtnNextStepAction(ActionEvent event) {
+
+    }
 }

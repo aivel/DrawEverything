@@ -2,6 +2,7 @@ package sample.providers;
 
 import javafx.scene.image.Image;
 import sample.Main;
+import sample.utils.ActionStatusChangedCallback;
 import sample.utils.DownloadManager;
 
 import java.io.File;
@@ -27,18 +28,23 @@ public class StepImagesProvider {
     }
 
     public static void putImage(final String filenamePrefix, final int step,
-                                final String url) {
+                                final String url, final ActionStatusChangedCallback callback) {
         final String filename = constructFilename(filenamePrefix, step);
-        DownloadManager.download(url, filename, false, new DownloadManager.DownloadStatusCallback() {
+        DownloadManager.download(url, filename, false, new ActionStatusChangedCallback() {
             @Override
-            public void onDownloadComplete() {
+            public void onSuccess() {
                 synchronized (images) {
                     images.put(filename, new Image(filename));
+
+                    if (callback != null)
+                        callback.onSuccess();
                 }
             }
 
             @Override
-            public void onDownloadFailed() {
+            public void onFail() {
+                if (callback != null)
+                    callback.onFail();
             }
         });
     }
