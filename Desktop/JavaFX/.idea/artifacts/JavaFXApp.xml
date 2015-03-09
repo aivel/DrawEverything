@@ -10,6 +10,7 @@
       <element id="archive" name="JavaFXApp.jar">
         <element id="module-output" name="JavaFX" />
       </element>
+      <element id="dir-copy" path="$PROJECT_DIR$/resources" />
     </root>
   </artifact>
 </component>
