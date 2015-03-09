@@ -6,6 +6,8 @@ import sample.utils.ActionStatusChangedCallback;
 import sample.utils.DownloadManager;
 
 import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -18,7 +20,7 @@ public class StepImagesProvider {
     private static final Map<String, Image> images = new HashMap<>();
 
     private static String constructFilename(final String filenamePrefix, final int step) {
-        return "file:" + File.separator + Main.imagesPath + filenamePrefix + "_" + step + stepFileExtension;
+        return Main.imagesPath + filenamePrefix + "_" + step + stepFileExtension;
     }
 
     public static void putImage(final String filenamePrefix, final int step,
@@ -34,7 +36,12 @@ public class StepImagesProvider {
             @Override
             public void onSuccess() {
                 synchronized (images) {
-                    images.put(filename, new Image(filename));
+                    try {
+                        URL url = new File(filename).toURI().toURL();
+                        images.put(filename, new Image(url.toString()));
+                    } catch (MalformedURLException e) {
+                        e.printStackTrace();
+                    }
 
                     if (callback != null)
                         callback.onSuccess();

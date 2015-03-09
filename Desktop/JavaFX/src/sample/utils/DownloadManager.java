@@ -41,13 +41,16 @@ public class DownloadManager {
                     in.close();
 
                     byte[] response = out.toByteArray();
-
-                    if (forced || !(new File(savePath).exists())) {
-                        FileOutputStream fos = new FileOutputStream(new URL(savePath).getFile());
+                    File file = new File(savePath);
+                    if (forced || !file.exists()) {
+                        file.getParentFile().mkdirs();
+                        file.createNewFile();
+                        FileOutputStream fos = new FileOutputStream(file);
                         fos.write(response);
                         fos.close();
-                    } else
+                    } else {
                         exception(null);
+                    }
                 } catch (java.io.IOException e) {
                     e.printStackTrace();
                     exception(e);
