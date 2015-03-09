@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-
-<GridPane alignment="center" hgap="10" stylesheets="@../resources/css/style.css" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.MainScene">
+<GridPane alignment="center" hgap="10" stylesheets="@../css/style.css" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.MainScene">
    <columnConstraints>
       <ColumnConstraints />
    </columnConstraints>
@@ -20,13 +14,13 @@
       <RowConstraints maxHeight="763.0" minHeight="180.0" prefHeight="190.0" />
    </rowConstraints>
    <children>
-      <Pane prefHeight="200.0" prefWidth="200.0" stylesheets="@../resources/css/style.css">
+      <Pane prefHeight="200.0" prefWidth="200.0" stylesheets="@../css/style.css">
          <children>
             <Button fx:id="btnMainScene" layoutX="14.0" layoutY="8.0" mnemonicParsing="false" onAction="#onBtnMainSceneAction" text="Главная страница" />
             <Button fx:id="btnCurrentLesson" layoutX="165.0" layoutY="8.0" mnemonicParsing="false" onAction="#onBtnCurrentLessonAction" text="Текущий урок" />
          </children>
       </Pane>
-      <Pane prefHeight="768.0" prefWidth="1024.0" stylesheets="@../resources/css/style.css" GridPane.rowIndex="3">
+      <Pane prefHeight="768.0" prefWidth="1024.0" stylesheets="@../css/style.css" GridPane.rowIndex="3">
          <children>
             <Label fx:id="label11" layoutX="25.0" layoutY="5.0" text="Новые темы:" />
             <GridPane fx:id="gridNewThemes" hgap="13.0" layoutX="25.0" layoutY="40.0" vgap="13.0">
@@ -44,7 +38,7 @@
       </Pane>
       <Pane prefHeight="165.0" prefWidth="1024.0" GridPane.rowIndex="1">
          <children>
-            <GridPane fx:id="gridNewLessons" hgap="13.0" layoutX="25.0" layoutY="40.0" stylesheets="@../resources/css/style.css" vgap="13.0">
+            <GridPane fx:id="gridNewLessons" hgap="13.0" layoutX="25.0" layoutY="40.0" stylesheets="@../css/style.css" vgap="13.0">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="120.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="120.0" />

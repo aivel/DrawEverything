@@ -42,6 +42,13 @@
     <entry_points version="2.0" />
   </component>
   <component name="IdProvider" IDEtalkID="F5217711C85F9F8ACB2FD7657751D896" />
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+      </list>
+    </option>
+  </component>
   <component name="ProjectKey">
     <option name="state" value="project://e79810c8-c5c8-43b1-b19c-90c1f4095425" />
   </component>

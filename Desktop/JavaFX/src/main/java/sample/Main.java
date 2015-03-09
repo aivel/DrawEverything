@@ -17,8 +17,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        mainRoot = FXMLLoader.load(getClass().getResource("scenes/main.fxml"));
-        drawRoot = FXMLLoader.load(getClass().getResource("scenes/draw.fxml"));
+        mainRoot = FXMLLoader.load(new File(workingDirectory + "/resources/scenes/main.fxml").toURI().toURL());
+        drawRoot = FXMLLoader.load(new File(workingDirectory + "/resources/scenes/draw.fxml").toURI().toURL());
         primaryStage.setTitle("MONEY TREE");
         primaryStage.setScene(new Scene(mainRoot, 1024, 850));
         primaryStage.setResizable(false);
