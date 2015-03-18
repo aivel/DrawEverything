@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import sample.controllers.MainScene;
 
 import java.io.File;
 
@@ -23,9 +24,10 @@ public class Main extends Application {
         mainRoot.load();
         drawRoot.load();
         allRoot.load();
+        ((MainScene)mainRoot.getController()).onLoad();
 
         primaryStage.setTitle("Draw Everything");
-        primaryStage.setScene(new Scene(mainRoot.getRoot(), 1024, 850));
+        primaryStage.setScene(new Scene(mainRoot.getRoot(), 880, 850));
         primaryStage.setResizable(false);
         primaryStage.show();
     }

@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
@@ -32,6 +33,8 @@ public class DrawScene {
     public static int currentStep;
     public static final int STARTING_STEP = 0;
     public Button btnSavePicture;
+    public Label lblBrushSize;
+    private double brushSize = 2.0;
 
     public void onBtnMainSceneAction(ActionEvent event) {
         ((Node)event.getSource()).getScene().setRoot(Main.mainRoot.getRoot());
@@ -49,7 +52,7 @@ public class DrawScene {
         MouseEvent me = (MouseEvent)event;
         canvas.getGraphicsContext2D().setFill(colorPicker.getValue());
         canvas.getGraphicsContext2D().setStroke(colorPicker.getValue());
-        canvas.getGraphicsContext2D().setLineWidth(2.0);
+        canvas.getGraphicsContext2D().setLineWidth(brushSize);
         canvas.getGraphicsContext2D().beginPath();
         canvas.getGraphicsContext2D().moveTo(me.getX(), me.getY());
         canvas.getGraphicsContext2D().stroke();
@@ -122,9 +125,21 @@ public class DrawScene {
     }
 
     public void onLoadLesson(final Lesson lesson) {
+        lblBrushSize.setText(String.valueOf(brushSize));
         currentLesson = lesson;
         currentStep = STARTING_STEP;
         canvas.getGraphicsContext2D().clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         updateCurrentStep();
+    }
+
+    public void onBtnIncBrushAction(ActionEvent actionEvent) {
+        brushSize += 0.5;
+        lblBrushSize.setText(String.valueOf(brushSize));
+    }
+
+    public void onBtnDecBrushAction(ActionEvent actionEvent) {
+        if (brushSize > 1.0)
+            brushSize -= 0.5;
+        lblBrushSize.setText(String.valueOf(brushSize));
     }
 }

@@ -1,7 +1,9 @@
 package sample.controllers;
 
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.scene.Node;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import sample.Main;
 import sample.model.Lesson;
@@ -18,6 +20,7 @@ import java.util.List;
 public class AllLessonsScene {
     private static final int MAX_PAGE = 3;
     private final int STARTING_PAGE = 0;
+    public TextField edtSearch;
     private int currentPage;
     private final int LESSON_ROWS = 4;
     private final String URL_LESSONS = "http://howtodraw.azurewebsites.net/HowToDraw/API/lessons/%s";
@@ -103,5 +106,51 @@ public class AllLessonsScene {
 
     public void onBtnNextPageAction(ActionEvent event) {
         nextPage();
+    }
+
+    public void onEdtSearchKeyTyped(Event event) {
+
+    }
+
+    public void onBtnSearchAction(ActionEvent actionEvent) {
+        grids = new ArrayList<>(LESSON_ROWS);
+        grids.add(r1);grids.add(r2);grids.add(r3);grids.add(r4);
+
+        for (int i = 0; i < grids.size(); i++) {
+            grids.get(i).getChildren().clear();
+        }
+
+//        for (int i = 0; i < LESSON_ROWS; i++) {
+            final int finalI = 0;
+
+            AsyncTask asyncTask = new AsyncTask() {
+                List<Lesson> lessons = new ArrayList<>();
+                @Override
+                public Object doInBackground() {
+                    lessons = API.JSONListToLessonList(
+                            API.downloadLessons(
+                                    String.format(API.URL_SEARCH, 0, edtSearch.getText())
+                            ));
+                    lessons = lessons.subList(0, 6);
+                    return null;
+                }
+
+                @Override
+                public void postExecute(Object result) {
+                    for (int j = 0; j < lessons.size(); j++) {
+                        NodesManager.putLessonsToGridPane(lessons, grids.get(finalI));
+                    }
+                }
+
+                @Override
+                public void exception(Exception e) {
+
+                }
+            };
+
+            asyncTask.start();
+//        }
+
+//        System.out.printf(String.valueOf(), false, "")));
     }
 }
