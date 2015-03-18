@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1024.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.AllLessonsScene">
+   <children>
+      <Pane layoutX="10.0" layoutY="10.0" prefHeight="56.0" prefWidth="471.0" stylesheets="@../css/style.css">
+         <children>
+            <Button fx:id="btnMainScene" layoutX="14.0" layoutY="8.0" mnemonicParsing="false" onAction="#onBtnMainSceneAction" text="Главная страница" />
+            <Button fx:id="btnCurrentLesson" layoutX="165.0" layoutY="8.0" mnemonicParsing="false" onAction="#onBtnCurrentLessonAction" text="Текущий урок" />
+            <Button fx:id="btnPrevPage" layoutX="307.0" layoutY="8.0" mnemonicParsing="false" onAction="#onBtnPrevPageAction" prefHeight="33.0" prefWidth="75.0" text="&lt;" />
+            <Button fx:id="btnNextPage" layoutX="382.0" layoutY="8.0" mnemonicParsing="false" onAction="#onBtnNextPageAction" prefHeight="33.0" prefWidth="75.0" text="&gt;" />
+         </children>
+      </Pane>
+      <GridPane fx:id="r1" hgap="13.0" layoutX="34.0" layoutY="139.0" vgap="13.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="120.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="130.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+      </GridPane>
+      <GridPane fx:id="r2" hgap="13.0" layoutX="34.0" layoutY="321.0" vgap="13.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="120.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="130.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+      </GridPane>
+      <GridPane fx:id="r3" hgap="13.0" layoutX="34.0" layoutY="505.0" vgap="13.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="120.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="130.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+      </GridPane>
+      <GridPane fx:id="r4" hgap="13.0" layoutX="34.0" layoutY="688.0" vgap="13.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="120.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="130.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+      </GridPane>
+   </children>
+</Pane>

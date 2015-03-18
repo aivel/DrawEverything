@@ -54,5 +54,20 @@
 }
 
 .root {
+    -fx-background-color: #efefef;
+}
+
+.centered_text {
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+    -fx-column-halignment: center;
+}
+
+.card {
     -fx-background-color: #ffffff;
+    -fx-min-width: 100px;
+    -fx-min-height: 160px;
+    -fx-background-position: center;
+    -fx-background-radius: 5px;
+    -fx-padding: 10px;
 }

@@ -2,7 +2,6 @@ package sample;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -12,15 +11,21 @@ public class Main extends Application {
     static public String workingDirectory = System.getProperty("user.dir");
     static public String imagesPath = workingDirectory + File.separator + "resources"
             + File.separator + "images" + File.separator;
-    static public Parent mainRoot;
-    static public Parent drawRoot;
+    static public FXMLLoader mainRoot;
+    static public FXMLLoader drawRoot;
+    static public FXMLLoader allRoot;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        mainRoot = FXMLLoader.load(new File(workingDirectory + "/resources/scenes/main.fxml").toURI().toURL());
-        drawRoot = FXMLLoader.load(new File(workingDirectory + "/resources/scenes/draw.fxml").toURI().toURL());
-        primaryStage.setTitle("MONEY TREE");
-        primaryStage.setScene(new Scene(mainRoot, 1024, 850));
+        mainRoot = new FXMLLoader(new File(workingDirectory + "/resources/scenes/main.fxml").toURI().toURL());
+        drawRoot = new FXMLLoader(new File(workingDirectory + "/resources/scenes/draw.fxml").toURI().toURL());
+        allRoot  = new FXMLLoader(new File(workingDirectory + "/resources/scenes/all.fxml").toURI().toURL());
+        mainRoot.load();
+        drawRoot.load();
+        allRoot.load();
+
+        primaryStage.setTitle("Draw Everything");
+        primaryStage.setScene(new Scene(mainRoot.getRoot(), 1024, 850));
         primaryStage.setResizable(false);
         primaryStage.show();
     }

@@ -20,7 +20,15 @@ public class LessonsProvider {
     }
 
     public Lesson getLesson(final long i) {
-        return lessons.stream().filter(lesson -> lesson.getId() == i).findFirst().get();
+        Lesson lesson = null;
+
+        try {
+            lesson = lessons.stream().filter(lsn -> lsn.getId() == i).findFirst().get();
+        } catch (Exception ignored) {
+            System.out.println("error while getting lesson" + i);
+        }
+
+        return lesson;
     }
 
     private static class Holder {
