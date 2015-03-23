@@ -18,17 +18,14 @@ import java.util.List;
  * Created by Max on 18.03.2015.
  */
 public class AllLessonsScene {
-    private static final int MAX_PAGE = 3;
+    private static int MAX_PAGE = 33;
+    private static final int LESSONS_PER_ROW = 6;
     private final int STARTING_PAGE = 0;
     public TextField edtSearch;
     private int currentPage;
     private final int LESSON_ROWS = 4;
     private final String URL_LESSONS = "http://howtodraw.azurewebsites.net/HowToDraw/API/lessons/%s";
-    public GridPane r2;
-    public GridPane r1;
-    public GridPane r3;
-    public GridPane r4;
-    private List<GridPane> grids;
+    public GridPane r;
 
     public void onBtnCurrentLessonAction(ActionEvent event) {
         ((Node)event.getSource()).getScene().setRoot(Main.drawRoot.getRoot());
@@ -47,8 +44,8 @@ public class AllLessonsScene {
     }
 
     public void onLoad() {
-        grids = new ArrayList<>(LESSON_ROWS);
-        grids.add(r1);grids.add(r2);grids.add(r3);grids.add(r4);
+        r.getChildren().clear();
+        MAX_PAGE = Integer.MAX_VALUE;
 
         for (int i = 0; i < LESSON_ROWS; i++) {
             final int finalI = i;
@@ -59,19 +56,21 @@ public class AllLessonsScene {
                 public Object doInBackground() {
                     lessons = API.JSONListToLessonList(
                             API.downloadLessons(String.format(URL_LESSONS, currentPage + finalI)));
+
+                    if (lessons == null || lessons.size() < LESSONS_PER_ROW) {
+                        MAX_PAGE = currentPage;
+                    }
+
                     return null;
                 }
 
                 @Override
                 public void postExecute(Object result) {
-                    for (int j = 0; j < lessons.size(); j++) {
-                        NodesManager.putLessonsToGridPane(lessons, grids.get(finalI));
-                    }
+                    NodesManager.putLessonsToGridPane(lessons, r, finalI);
                 }
 
                 @Override
                 public void exception(Exception e) {
-
                 }
             };
 
@@ -80,24 +79,28 @@ public class AllLessonsScene {
     }
 
     private void prevPage() {
-        if (currentPage < STARTING_PAGE)
+        if (currentPage <= STARTING_PAGE)
             return;
 
         if (currentPage > STARTING_PAGE)
-            currentPage--;
+            currentPage -=  LESSON_ROWS;
 
         updateCurrentPage();
     }
 
     private void nextPage() {
+        if (currentPage == MAX_PAGE)
+            return;
+
         if (currentPage < MAX_PAGE)
-            currentPage++;
+            currentPage += LESSON_ROWS;
 
         updateCurrentPage();
     }
 
     private void updateCurrentPage() {
         onLoad();
+        edtSearch.setText("");
     }
 
     public void onBtnPrevPageAction(ActionEvent event) {
@@ -113,32 +116,41 @@ public class AllLessonsScene {
     }
 
     public void onBtnSearchAction(ActionEvent actionEvent) {
-        grids = new ArrayList<>(LESSON_ROWS);
-        grids.add(r1);grids.add(r2);grids.add(r3);grids.add(r4);
+        r.getChildren().clear();
 
-        for (int i = 0; i < grids.size(); i++) {
-            grids.get(i).getChildren().clear();
-        }
-
-//        for (int i = 0; i < LESSON_ROWS; i++) {
+        for (int i = 0; i < LESSON_ROWS; i++) {
             final int finalI = 0;
 
             AsyncTask asyncTask = new AsyncTask() {
                 List<Lesson> lessons = new ArrayList<>();
+
                 @Override
                 public Object doInBackground() {
-                    lessons = API.JSONListToLessonList(
-                            API.downloadLessons(
-                                    String.format(API.URL_SEARCH, 0, edtSearch.getText())
-                            ));
-                    lessons = lessons.subList(0, 6);
+                    int i = 0;
+
+                    while (true) {
+                        final List<Lesson> tmpLessons = API.JSONListToLessonList(
+                                API.downloadLessons(
+                                        String.format(API.URL_SEARCH, i, edtSearch.getText())
+                                ));
+
+                        i += LESSON_ROWS;
+
+                        if (tmpLessons == null || tmpLessons.size() <= 0)
+                            break;
+
+                        lessons.addAll(tmpLessons);
+                    }
+
                     return null;
                 }
 
                 @Override
                 public void postExecute(Object result) {
-                    for (int j = 0; j < lessons.size(); j++) {
-                        NodesManager.putLessonsToGridPane(lessons, grids.get(finalI));
+                    for (int j = 0; j < LESSON_ROWS; j++) {
+                        final List<Lesson> sublist = lessons.subList(j * LESSONS_PER_ROW, j * LESSONS_PER_ROW + LESSONS_PER_ROW);
+
+                        NodesManager.putLessonsToGridPane(sublist, r, j);
                     }
                 }
 
@@ -149,7 +161,7 @@ public class AllLessonsScene {
             };
 
             asyncTask.start();
-//        }
+        }
 
 //        System.out.printf(String.valueOf(), false, "")));
     }

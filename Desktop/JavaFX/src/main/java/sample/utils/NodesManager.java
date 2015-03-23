@@ -18,8 +18,7 @@ import java.util.List;
  * Created by Max on 18.03.2015.
  */
 public class NodesManager {
-    public static void putLessonsToGridPane(final List<Lesson> lessons, final GridPane gridPane) {
-        gridPane.getChildren().clear();
+    public static void putLessonsToGridPane(final List<Lesson> lessons, final GridPane gridPane, int row) {
         final int PREVIEW_INDEX = -1;
 
         for(int i = 0; i < lessons.size(); i++) {
@@ -68,7 +67,7 @@ public class NodesManager {
                             pane.getStyleClass().add("card");
                             pane.setAlignment(Pos.CENTER);
 
-                            gridPane.add(pane, finalI, 0);
+                            gridPane.add(pane, finalI, row);
                         }
 
                         @Override

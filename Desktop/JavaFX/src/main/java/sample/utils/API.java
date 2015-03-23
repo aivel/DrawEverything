@@ -34,6 +34,8 @@ public class API {
             try {
                 result = Request.Post(url).bodyString(params,
                         ContentType.DEFAULT_TEXT)
+                        .connectTimeout(3000)
+                        .socketTimeout(3000)
                         .execute()
                         .returnContent()
                         .asString();
@@ -108,7 +110,7 @@ public class API {
         return lessons;
     }
 
-    public static List JSONListToLessonList(final List<JSONObject> lessons) {
+    public static List<Lesson> JSONListToLessonList(final List<JSONObject> lessons) {
         final String urlPreview = "http://howtodraw.azurewebsites.net/HowToDraw/API/lesson_prev/";
 
         List<Lesson> lessonsLst = new ArrayList<>(lessons.size());

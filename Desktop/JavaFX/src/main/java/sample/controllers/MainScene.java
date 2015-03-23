@@ -54,10 +54,10 @@ public class MainScene {
 
             @Override
             public void postExecute(Object result) {
-                NodesManager.putLessonsToGridPane(popularLessons, gridPopularLessons);
-                NodesManager.putLessonsToGridPane(newLessons, gridNewLessons);
-                NodesManager.putLessonsToGridPane(popularThemesLessons, gridPopularThemesLessons);
-                NodesManager.putLessonsToGridPane(newThemesLessons, gridNewThemesLessons);
+                NodesManager.putLessonsToGridPane(popularLessons, gridPopularLessons, 0);
+                NodesManager.putLessonsToGridPane(newLessons, gridNewLessons, 0);
+                NodesManager.putLessonsToGridPane(popularThemesLessons, gridPopularThemesLessons, 0);
+                NodesManager.putLessonsToGridPane(newThemesLessons, gridNewThemesLessons, 0);
             }
 
             @Override
