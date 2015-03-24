@@ -10,10 +10,17 @@
       <element id="archive" name="JavaFXApp.jar">
         <element id="module-output" name="JavaFX" />
       </element>
-      <element id="dir-copy" path="$PROJECT_DIR$/resources" />
       <element id="library" level="project" name="Maven: com.googlecode.json-simple:json-simple:1.1.1" />
       <element id="library" level="project" name="Maven: junit:junit:4.10" />
       <element id="library" level="project" name="Maven: org.hamcrest:hamcrest-core:1.1" />
+      <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.9" />
+      <element id="library" level="project" name="Maven: org.apache.httpcomponents:fluent-hc:4.4" />
+      <element id="library" level="project" name="Maven: commons-logging:commons-logging:1.2" />
+      <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpclient:4.4" />
+      <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpcore:4.4" />
+      <element id="directory" name="resources">
+        <element id="dir-copy" path="$PROJECT_DIR$/src/main/resources" />
+      </element>
     </root>
   </artifact>
 </component>

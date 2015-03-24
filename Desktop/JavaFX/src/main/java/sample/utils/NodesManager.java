@@ -37,7 +37,7 @@ public class NodesManager {
 
                             final ImageView imageNode = new ImageView(image);
                             imageNode.setOnMouseClicked(event -> {
-                                for (int j = 0; j < lesson.getSteps(); j++) {
+                                for (int j = 0; j <= lesson.getSteps(); j++) {
                                     StepImagesProvider.putImage(imgName,
                                             j, String.format(API.URL_DOWNLOAD_LESSON_STEP, lesson.getId(),
                                                     j), new ActionStatusChangedCallback() {

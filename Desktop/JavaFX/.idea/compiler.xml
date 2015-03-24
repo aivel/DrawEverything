@@ -25,5 +25,8 @@
         <module name="JavaFX" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="JavaFX" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
