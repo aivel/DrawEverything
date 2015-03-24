@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1024.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.AllLessonsScene">
+   <children>
+      <Pane layoutX="10.0" layoutY="10.0" prefHeight="56.0" prefWidth="471.0" stylesheets="@../css/style.css">
+         <children>
+            <Button fx:id="btnMainScene" layoutX="14.0" layoutY="8.0" mnemonicParsing="false" onAction="#onBtnMainSceneAction" text="Главная страница" />
+            <Button fx:id="btnCurrentLesson" layoutX="165.0" layoutY="8.0" mnemonicParsing="false" onAction="#onBtnCurrentLessonAction" text="Текущий урок" />
+            <Button fx:id="btnPrevPage" layoutX="307.0" layoutY="8.0" mnemonicParsing="false" onAction="#onBtnPrevPageAction" prefWidth="75.0" text="&lt;" />
+            <Button fx:id="btnNextPage" layoutX="382.0" layoutY="8.0" mnemonicParsing="false" onAction="#onBtnNextPageAction" prefWidth="75.0" text="&gt;" />
+            <TextField fx:id="edtSearch" layoutX="460.0" layoutY="10.0" onKeyTyped="#onEdtSearchKeyTyped" prefWidth="135.0" />
+            <Button fx:id="btnSearch" layoutX="600.0" layoutY="8.0" onAction="#onBtnSearchAction" text="Искать" />
+         </children>
+      </Pane>
+      <GridPane fx:id="r" hgap="13.0" vgap="13.0" layoutX="25.0" layoutY="110.0">
+        <columnConstraints>
+          <!--<ColumnConstraints hgrow="ALWAYS" minWidth="100.0" prefWidth="100.0" />-->
+        </columnConstraints>
+        <rowConstraints>
+          <!--<RowConstraints minHeight="130.0" prefHeight="130.0" vgrow="ALWAYS" />-->
+        </rowConstraints>
+      </GridPane>
+   </children>
+</Pane>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1024.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.DrawScene">
+   <children>
+      <Pane layoutX="10.0" layoutY="10.0" prefHeight="56.0" prefWidth="997.0" stylesheets="@../css/style.css">
+         <children>
+            <Button fx:id="btnMainScene" layoutX="14.0" layoutY="8.0" mnemonicParsing="false" onAction="#onBtnMainSceneAction" text="Главная страница" />
+            <ColorPicker fx:id="colorPicker" layoutX="502.0" layoutY="9.0" />
+            <Button fx:id="btnPrevStep" layoutX="356.0" layoutY="8.0" mnemonicParsing="false" onAction="#onBtnPrevStepAction" prefWidth="75.0" text="&lt;" />
+            <Button fx:id="btnNextStep" layoutX="426.0" layoutY="8.0" mnemonicParsing="false" onAction="#onBtnNextStepAction" prefWidth="75.0" text="&gt;" />
+            <Button fx:id="btnSavePicture" layoutX="180.0" layoutY="8.0" mnemonicParsing="false" onAction="#onBtnSavePictureAction" text="Сохранить рисунок" />
+            <Button fx:id="btnIncBrushSize" layoutX="802.0" layoutY="8.0" mnemonicParsing="false" prefWidth="61.0" text="+" onAction="#onBtnIncBrushAction" />
+            <Button fx:id="btnDecBrushSize" layoutX="706.0" layoutY="8.0" mnemonicParsing="false" prefWidth="61.0" text="-" onAction="#onBtnDecBrushAction" />
+            <Label fx:id="lblBrushSize" layoutX="778.0" layoutY="14.0" text="2.0" />
+            <Label layoutX="658.0" layoutY="18.0" text="Кисть" />
+         </children>
+      </Pane>
+      <ImageView fx:id="stepImage" fitHeight="755.0" fitWidth="974.0" layoutX="33.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true" />
+      <Canvas fx:id="canvas" height="775.0" layoutX="25.0" layoutY="60.0" onMouseDragged="#onCanvasMouseDragged" onMouseMoved="#onCanvasMouseMoved" onMousePressed="#onCanvasMousePressed" onMouseReleased="#onCanvasMouseReleased" styleClass="background" width="974.0" />
+   </children>
+</Pane>
