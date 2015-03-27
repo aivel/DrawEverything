@@ -19,7 +19,12 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        System.out.println(new File(imagesPath).mkdirs()); // Create images directory in temp folder
+        try {
+            new File(imagesPath).mkdirs(); // Create images directory in temp folder
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
         mainRoot = new FXMLLoader(new File(workingDirectory + "/resources/scenes/main.fxml").toURI().toURL());
         drawRoot = new FXMLLoader(new File(workingDirectory + "/resources/scenes/draw.fxml").toURI().toURL());
         allRoot  = new FXMLLoader(new File(workingDirectory + "/resources/scenes/all.fxml").toURI().toURL());
