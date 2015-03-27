@@ -10,7 +10,8 @@ import java.io.File;
 
 public class Main extends Application {
     static public String workingDirectory = System.getProperty("user.dir");
-    static public String imagesPath = workingDirectory + File.separator + "resources"
+    static public String tempPath = System.getProperty("java.io.tmpdir");
+    static public String imagesPath = tempPath + File.separator + "draweverything"//workingDirectory + File.separator + "resources"
             + File.separator + "images" + File.separator;
     static public FXMLLoader mainRoot;
     static public FXMLLoader drawRoot;
@@ -18,6 +19,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+        System.out.println(new File(imagesPath).mkdirs()); // Create images directory in temp folder
         mainRoot = new FXMLLoader(new File(workingDirectory + "/resources/scenes/main.fxml").toURI().toURL());
         drawRoot = new FXMLLoader(new File(workingDirectory + "/resources/scenes/draw.fxml").toURI().toURL());
         allRoot  = new FXMLLoader(new File(workingDirectory + "/resources/scenes/all.fxml").toURI().toURL());
@@ -25,6 +27,7 @@ public class Main extends Application {
         drawRoot.load();
         allRoot.load();
         ((MainScene)mainRoot.getController()).onLoad();
+
 
         primaryStage.setTitle("Draw Everything");
         primaryStage.setScene(new Scene(mainRoot.getRoot(), 880, 850));
