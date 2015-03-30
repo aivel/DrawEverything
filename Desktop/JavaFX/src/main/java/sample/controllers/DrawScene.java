@@ -16,6 +16,7 @@ import javafx.stage.FileChooser;
 import sample.Main;
 import sample.model.Lesson;
 import sample.providers.StepImagesProvider;
+import sample.utils.Dialogs;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -97,10 +98,13 @@ public class DrawScene {
         Image img = StepImagesProvider.getImage(
                 currentLesson.getLocalId() + "_" + currentLesson.getId(), currentStep);
 
-        if (img == null)
+        if (img == null) {
+            Dialogs.showOneButtonDialog("Ошибка!", "Не удалось загрузить шаг урока!\nПопробуйте повторить действие.");
             return;
+        }
 
         stepImage.setImage(img);
+        stepImage.setX(img.getWidth() / 4.0);
     }
 
     public void onBtnNextStepAction(ActionEvent event) {

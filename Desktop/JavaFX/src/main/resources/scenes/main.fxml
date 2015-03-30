@@ -19,7 +19,7 @@
       <Pane prefHeight="200.0" prefWidth="200.0" stylesheets="@../css/style.css">
          <children>
             <Button fx:id="btnMainScene" layoutX="14.0" layoutY="8.0" mnemonicParsing="false" onAction="#onBtnMainSceneAction" text="Главная страница" />
-            <Button fx:id="btnCurrentLesson" layoutX="296.0" layoutY="8.0" mnemonicParsing="false" onAction="#onBtnCurrentLessonAction" text="Текущий урок" />
+            <Button fx:id="btnCurrentLesson" layoutX="296.0" layoutY="8.0" mnemonicParsing="false" onAction="#onBtnCurrentLessonAction" text="Текущий урок" disable="true" />
             <Button fx:id="btnAllLessons" layoutX="181.0" layoutY="8.0" mnemonicParsing="false" onAction="#onBtnAllLessonsAction" prefWidth="125.0" text="Все уроки" />
          </children>
       </Pane>

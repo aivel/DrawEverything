@@ -9,6 +9,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import sample.Main;
 import sample.controllers.DrawScene;
+import sample.controllers.MainScene;
 import sample.model.Lesson;
 import sample.providers.StepImagesProvider;
 
@@ -38,18 +39,23 @@ public class NodesManager {
                             final ImageView imageNode = new ImageView(image);
                             imageNode.setOnMouseClicked(event -> {
                                 for (int j = 0; j <= lesson.getSteps(); j++) {
+                                    final int finalJ = j;
+
                                     StepImagesProvider.putImage(imgName,
                                             j, String.format(API.URL_DOWNLOAD_LESSON_STEP, lesson.getId(),
                                                     j), new ActionStatusChangedCallback() {
                                                 @Override
                                                 public void onSuccess() {
                                                     ((Node) event.getSource()).getScene().setRoot(Main.drawRoot.getRoot());
-                                                    ((DrawScene) Main.drawRoot.getController()).onLoadLesson(lesson);
+
+                                                    if (finalJ == 0) {
+                                                        ((DrawScene) Main.drawRoot.getController()).onLoadLesson(lesson);
+                                                        ((MainScene) Main.mainRoot.getController()).btnCurrentLesson.setDisable(false);
+                                                    }
                                                 }
 
                                                 @Override
                                                 public void onFail() {
-
                                                 }
                                             });
                                 }

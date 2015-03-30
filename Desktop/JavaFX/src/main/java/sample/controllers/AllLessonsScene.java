@@ -162,7 +162,5 @@ public class AllLessonsScene {
 
             asyncTask.start();
         }
-
-//        System.out.printf(String.valueOf(), false, "")));
     }
 }

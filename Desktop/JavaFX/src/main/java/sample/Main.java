@@ -24,7 +24,7 @@ public class Main extends Application {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
         mainRoot = new FXMLLoader(new File(workingDirectory + "/resources/scenes/main.fxml").toURI().toURL());
         drawRoot = new FXMLLoader(new File(workingDirectory + "/resources/scenes/draw.fxml").toURI().toURL());
         allRoot  = new FXMLLoader(new File(workingDirectory + "/resources/scenes/all.fxml").toURI().toURL());

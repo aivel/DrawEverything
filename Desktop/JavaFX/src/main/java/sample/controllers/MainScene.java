@@ -2,6 +2,7 @@ package sample.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import sample.Main;
 import sample.model.Lesson;
@@ -22,6 +23,7 @@ public class MainScene {
     public List<Lesson> popularLessons;
     public List<Lesson> newThemesLessons;
     public List<Lesson> popularThemesLessons;
+    public Button btnCurrentLesson;
 
     public void onBtnMainSceneAction(ActionEvent actionEvent) {
         onLoad();

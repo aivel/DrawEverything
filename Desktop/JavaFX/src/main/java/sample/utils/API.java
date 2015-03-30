@@ -50,43 +50,6 @@ public class API {
             }
         }
 
-//        try {
-//            String encodedData = URLEncoder.encode(params);
-//
-//            URL request_url = new URL(url);
-//            HttpURLConnection http_conn;
-//
-//            http_conn = (HttpURLConnection)request_url.openConnection();
-//            http_conn.setRequestMethod(post ? "POST" : "GET");
-//            if (post)
-//                http_conn.setRequestProperty("Content-Length", String.valueOf(encodedData));
-//            http_conn.setFollowRedirects(true);
-//            http_conn.setConnectTimeout(3000);
-//            http_conn.setReadTimeout(3000);
-//            http_conn.setInstanceFollowRedirects(true);
-//
-//            if (post) {
-//                http_conn.setDoOutput(true);
-//                OutputStream os = http_conn.getOutputStream();
-//
-//                os.write(encodedData.getBytes());
-//            }
-//
-//            BufferedReader in = new BufferedReader(
-//                    new InputStreamReader(http_conn.getInputStream()));
-//            String inputLine;
-//            StringBuffer response = new StringBuffer();
-//
-//            while ((inputLine = in.readLine()) != null) {
-//                response.append(inputLine);
-//            }
-//            in.close();
-//
-//            result = response.toString();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-
         JSONObject jsonObject = null;
 
         try {
