@@ -13,7 +13,7 @@ arch=("x86_64")
 url=""
 license=('GPL')
 groups=()
-depends=('jdk-devel>=9b55-1')
+depends=('jdk-devel')
 makedepends=('git' 'pacman>=4.2.0' 'maven')
 checkdepends=()
 optdepends=()
